@@ -1,15 +1,9 @@
 ﻿using Humanizer;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StringManipulation
 {
-    public class StringOperations
+	public class StringOperations
     {
         private readonly ILogger _logger;
         public StringOperations() {
@@ -22,7 +16,7 @@ namespace StringManipulation
 
         public string ConcatenateStrings(string str1, string str2)
         {
-            return str1 + " " + str2;
+            return $"{str1} {str2}";
         }
 
         public string ReverseString(string str)
