@@ -1,4 +1,7 @@
-﻿namespace StringManipulation.Test
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+
+namespace StringManipulation.Test
 {
 	public class StringOperationTest
 	{
@@ -62,7 +65,7 @@
 			var result = strOperations.RemoveWhitespace(word);
 
 			// Assert
-			Assert.Equal(expected,result);
+			Assert.Equal(expected, result);
 		}
 
 		[Fact(Skip = "Esta prueba no es valida en este momento ya que esta en español, Ticket-002")]
@@ -103,7 +106,7 @@
 		}
 
 		[Theory]
-		[InlineData("V",5)]
+		[InlineData("V", 5)]
 		[InlineData("III", 3)]
 		[InlineData("X", 10)]
 		public void FromRomanToNumber(string romanNumber, int expected)
@@ -116,6 +119,40 @@
 
 			// Assert
 			Assert.Equal(expected, result);
+		}
+
+		[Fact]
+		public void CountOccurrences()
+		{
+			// Arrange
+			var mockLogger = new Mock<ILogger<StringOperations>>();
+			var strOperations = new StringOperations(mockLogger.Object);
+
+
+			// Act
+			var result = strOperations.CountOccurrences("Hello platzi", 'l');
+
+			// Assert
+			Assert.Equal(3, result);
+		}
+
+		[Fact]
+		public void ReadFile()
+		{
+			// Arrange
+			var strOperations = new StringOperations();
+			var mockFileReader = new Mock<IFileReaderConector>();
+
+			mockFileReader
+				.Setup(p => p.ReadString(It.IsAny<string>()))
+				.Returns("Reading File");
+
+			// Act
+			var result = strOperations.ReadFile(mockFileReader.Object, "file.txt");
+
+			// Assert
+			Assert.Equal("Reading File", result);
+
 		}
 
 	}

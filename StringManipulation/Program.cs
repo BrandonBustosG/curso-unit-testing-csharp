@@ -1,8 +1,10 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using StringManipulation;
 
-internal class Program
+[ExcludeFromCodeCoverage]
+public class Program
 {
     private static void Main(string[] args)
     {

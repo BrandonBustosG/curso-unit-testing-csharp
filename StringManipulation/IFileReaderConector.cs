@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StringManipulation
+﻿namespace StringManipulation
 {
-    public class FileReaderConector : IFileReaderConector
+	public class FileReaderConector : IFileReaderConector
     {
         public string ReadString(string fileName)
         {
