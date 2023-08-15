@@ -65,7 +65,7 @@
 			Assert.Equal(expected,result);
 		}
 
-		[Fact]
+		[Fact(Skip = "Esta prueba no es valida en este momento ya que esta en español, Ticket-002")]
 		public void QuantintyInWords()
 		{
 			// Arrange
